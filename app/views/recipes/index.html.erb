@@ -1,0 +1,8 @@
+
+
+<% @recipes.each do |recipe| %>
+  <div class="recipe_wrapper">
+    <h3 class="recipe"><%= link_to recipe.title, recipe %></h3>
+    <p class="date"> <%= recipe.created_at.strftime("%B, %d, %Y") %></p>
+  </div>
+<% end %>
