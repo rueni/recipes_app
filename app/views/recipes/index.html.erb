@@ -4,5 +4,6 @@
   <div class="recipe_wrapper">
     <h3 class="recipe"><%= link_to recipe.title, recipe %></h3>
     <p class="date"> <%= recipe.created_at.strftime("%B, %d, %Y") %></p>
+    <p><%= recipe.comments.count %> Comments</p>
   </div>
 <% end %>
