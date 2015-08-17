@@ -2,6 +2,16 @@
   <h2>New Recipe</h2>
 
   <%= form_for :recipe, url: recipes_path do |f| %>
+  <% if @recipe.errors.any? %>
+    <div id="errors">
+      <h3>Ruh-Roh! <%= pluralize(@recipe.errors.count, "error") %> prevented this form from saving.</h3>
+      <ul>
+        <% @recipe.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
     <%= f.label :title %><br>
     <%= f.text_field :title %><br>
     <br>
