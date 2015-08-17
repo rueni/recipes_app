@@ -18,6 +18,10 @@
 		<ul>
 			<li class="category">Website</li>
 			<li><%= link_to "Recipes", root_path %></li>
+      <% if !user_signed_in? %>
+      <li><%= link_to "Register", new_user_registration_path %></li>
+      <li><%= link_to "Sign In", new_user_session_path %></li>
+      <% end %>
 		</ul>
 
 		<ul>
@@ -25,11 +29,7 @@
 			<li><a href="https://twitter.com/ckim79">Twitter</a></li>
 			<li><a href="http://instagram.com/rueni">Instagram</a></li>
 			<li><a href="https://github.com/rueni">Github</a></li>
-			<li><a href="mailto:ck0825@yahoo.com">Email</a></li>
 		</ul>
-    <% if !user_signed_in? %>
-    <p class=sign_in>Admin Login</p>
-    <% end %>
 	</div>
   <div id="main_content">
       <div id="header">
@@ -41,7 +41,7 @@
         <% if user_signed_in? %>
         <div class="buttons">
           <button type="button" class="button"><%= link_to "New Recipe", new_recipe_path %></button>
-          <button type="button" class="button">Log Out</button>
+          <button type="button" class="button"><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></button>
         </div>
         <% end %>
       </div>
