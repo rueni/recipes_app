@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :recipes
   root 'recipes#index'
+  delete 'recipes/delete' => 'recipes#delete'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

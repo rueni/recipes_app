@@ -5,10 +5,14 @@
 
 <p class="date">
   Submitted <%= time_ago_in_words(@recipe.created_at) %> Ago
+  | <%= link_to 'Edit', edit_recipe_path(@recipe) %>
+  | <%= link_to 'Delete', recipe_path(@recipe), method: :delete, data: {confirm: "Are you sure?" } %>
+
 </p>
 
 <p class="body">
   <%= @recipe.body %>
 </p>
+
 
 </div>

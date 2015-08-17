@@ -1,4 +1,5 @@
 class RecipesController < ApplicationController
+  # before_actions
 
   def index
     @recipes = Recipe.all.order('created_at DESC')
@@ -25,9 +26,19 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
   end
 
-  def delete
+  def update
+    @recipe = Recipe.find(params[:id])
+
+    if @recipe.update(recipe_params)
+      redirect_to @recipe
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
     @recipe = Recipe.find(params[:id]).destroy
-    redirect_to 'index'
+    redirect_to root_path
   end
 
 
@@ -35,6 +46,7 @@ class RecipesController < ApplicationController
   def recipe_params
     params.require(:recipe).permit(:title, :body)
   end
+
 
 
 
